@@ -48,7 +48,7 @@ jobs:
             ${{ steps.changelog.outputs.changelog }}
 
       - run: git status
-      - name: 📦  vue-pro/search publish to NPM
+      - name: 📦  vue2-pro/ui publish to NPM
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
