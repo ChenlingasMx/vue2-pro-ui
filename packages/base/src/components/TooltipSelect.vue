@@ -227,7 +227,7 @@ export default {
   }
 }
 
-/deep/.el-select__tags {
+::v-deep .el-select__tags {
   max-width: none !important;
   input:not(:first-child) {
     margin-left: 5px;
@@ -257,7 +257,7 @@ export default {
     }
   }
 }
-/deep/.el-select__tags .el-tag:first-of-type .el-select__tags-text {
+::v-deep .el-select__tags .el-tag:first-of-type .el-select__tags-text {
   display: inline-block !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
