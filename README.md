@@ -168,21 +168,6 @@ export default {
 <style></style>
 ```
 
-### Props
-
-| 参数         | 说明                                                          | 类型                    | 默认值 |
-| ------------ | ------------------------------------------------------------- | ----------------------- | ------ |
-| dataSource   | 数据                                                    | Object                  | {}      |
-| items        | 配置项                                                   | Array                  | []      |
-| labelPosition| 表单表头位置                                              | String                   | left     |
-| labelWidth   | 表单表头宽度                                        | Number            | 90      |
-| labelMaxWidth| 表单宽度           | String     | 400px
-| size  | 表单大小                              | String                     | small      |
-| showChangeBtn         | 是否展示切换按钮                                                      | Boolean                 | true   |
-| span         | 非只读模式下,可以通过指定 24 列中每列的宽度来创建基本网格系统 | string                  | '8'    |
-| color     | 主题色                  | Boolean                  | true      |
-| show     | 模式切换                                                      | boolean                 | true      |
-
 ### License
 
 Licensed under the MIT License.
