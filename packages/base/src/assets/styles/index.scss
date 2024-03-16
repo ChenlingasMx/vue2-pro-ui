@@ -1,0 +1,827 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+@import './common.scss';
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  background-color: #F5F6FA;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+  overflow: hidden;
+}
+.el-table tr th>.cell {
+  white-space: nowrap;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.padding-content {
+  padding: 4px 0;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.pr-5 {
+  padding-right: 5px;
+}
+
+.pl-5 {
+  padding-left: 5px;
+}
+
+.block {
+  display: block;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.inlineBlock {
+  display: block;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+.el-dropdown-link.el-dropdown-selfdefine:focus,
+.el-tooltip.item:focus {
+    outline:none;
+}
+code {
+  background: #eef1f6;
+  padding: 15px 16px;
+  margin-bottom: 20px;
+  display: block;
+  line-height: 36px;
+  font-size: 15px;
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+
+  a {
+    color: #337ab7;
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(32, 160, 255);
+    }
+  }
+}
+
+.warn-content {
+  background: rgba(66, 185, 131, .1);
+  border-radius: 2px;
+  padding: 16px;
+  padding: 1rem;
+  line-height: 1.6rem;
+  word-spacing: .05rem;
+
+  a {
+    color: #4C84FF;
+    font-weight: 600;
+  }
+}
+
+//main-container全局样式
+.app-container {
+  //padding: 20px;
+}
+
+.components-container {
+  margin: 30px 50px;
+  position: relative;
+}
+
+.pagination-container {
+  margin-top: 30px;
+}
+
+.text-center {
+  text-align: center
+}
+
+.sub-navbar {
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+  transition: 600ms ease position;
+  background: linear-gradient(90deg, rgba(32, 182, 249, 1) 0%, rgba(32, 182, 249, 1) 0%, rgba(33, 120, 241, 1) 100%, rgba(33, 120, 241, 1) 100%);
+
+  .subtitle {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  &.draft {
+    background: #d0d0d0;
+  }
+
+  &.deleted {
+    background: #d0d0d0;
+  }
+}
+
+.link-type,
+.link-type:focus {
+  color: #337ab7;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(32, 160, 255);
+  }
+}
+
+.filter-container {
+  padding-bottom: 10px;
+
+  .filter-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+  }
+}
+
+//refine vue-multiselect plugin
+.multiselect {
+  line-height: 16px;
+}
+
+.multiselect--active {
+  z-index: 1000 !important;
+}
+
+
+//  新增加的css样式
+.formHeader{
+  padding: 10px 23px 0px;
+  background-color: #ffffff;
+}
+.el-form-item--mini.el-form-item, .el-form-item--small.el-form-item {
+  margin-bottom: 15px;
+}
+.wxTableGroup{
+  margin-top: 6px;
+  padding: 8px 12px;
+  background-color: #ffffff;
+  .wxBtnGroup{
+    margin-bottom: 10px;
+    margin-top:4px;
+  }
+}
+.wxPage{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.iSelect {
+  .el-select .el-input .el-select__caret{
+    background-color: red;
+  }
+}
+
+.tabHeader{
+  padding: 5px;
+  height:30px;
+  font-size:14px;
+  color:rgba(51,51,51,1);
+  line-height:14px;
+  border-bottom: 1px #eeeeee solid;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.popTabBox{
+  .el-form-item__label {
+    font-weight:400;
+    color:rgba(102,102,102,1);
+    line-height:28px;
+    font-size: 13px;
+  }
+}
+
+.tipsBox{
+  padding: 7px 12px;
+  background:rgba(228,237,255,1);
+  border-radius:4px;
+  border:1px solid rgba(76,132,255,1);
+  margin-bottom: 20px;
+  .tipsHeader{
+    font-size:12px;
+    font-family:PingFangSC-Medium;
+    font-weight:bolder;
+    color:rgba(0,0,0,1);
+    line-height:17px;
+  }
+  .tipsBody{
+    font-size:12px;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(102,102,102,1);
+    line-height:17px;
+  }
+}
+
+.gradeBox{
+  padding: 5px 10px;
+  height:61px;
+  background:rgba(245,247,250,1);
+  border-radius:4px;
+  border:1px solid rgba(220,223,230,1);
+}
+
+// 表格icon
+.operationBox{
+  height: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  .el-dropdown{
+    height: 19px;
+  }
+}
+.table-icon{
+  font-size: 18px;
+  margin-right: 10px;
+}
+.view-icon{
+  color: #4C84FF;
+}
+.log-icon{
+  color: #4C84FF;
+}
+.more-icon{
+  color: #606266;
+}
+.edit-icon{
+  color: #8FC484;
+}
+.longSelect{
+  width: 100%;
+}
+
+.oHidden{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 6px;
+  background: rgba(0,0,0,0.06);
+  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.08);
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background: rgba(0,0,0,0.12);
+  -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+}
+.allIcon{
+  font-size: 18px;
+  margin-top: 2px;
+}
+/*.el-form-item--mini .el-form-item__content, .el-form-item--mini .el-form-item__label{
+  .el-input--mini .el-input__inner{
+    width: 220px;
+  }
+  .el-textarea__inner{
+    width: 100%;
+  }
+}
+.el-select{
+  width: 220px;
+}*/
+.myAreaTable .el-table__fixed-body-wrapper{
+  top: 36px!important;
+}
+.menuBody::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+.menuBody::-webkit-scrollbar-track {
+  border-radius: 1px;
+  background: rgba(0,0,0,0.06);
+  -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.08);
+}
+.noColor{
+  color: #D17275;
+}
+.yesColor{
+  color: #8FC484;
+}
+.el-button--primary{
+  background-color: #4C84FF;
+  //border: 1px solid #E4EDFF;
+}
+.el-button--primary:hover{
+  background-color: #76A1FF;
+}
+.el-button--primary:active{
+ background-color: #3468DC;
+}
+.el-button--reset{
+  background-color: #E4EDFF;
+  border: 1px solid #4C84FF;
+}
+.el-button--reset:hover{
+  background-color: #C8DBFF;
+  border: 1px solid #76A1FF;
+}
+.el-button--reset:active{
+  background-color: #89AEF5;
+  border: 1px solid #3468DC;
+}
+.el-button:focus, .el-button:hover{
+  //background-color: #4C84FF;
+  //border: 1px solid #4C84FF;
+  //color: #ffffff;
+}
+
+
+
+.price-wrap {
+  .el-input__inner {
+
+    height: 28px;
+    border-radius: 4px;
+    border: 1px solid rgba(220, 223, 230, 1);
+  }
+  .el-card__header {
+    padding: 14px 11px;
+    height: 41px;
+    font-size: 14px;
+  }
+  .el-card__body {
+    padding: 0;
+  }
+  .el-card {
+    border: 1px solid rgba(210, 210, 210, 1);
+    box-shadow: none;
+    padding: 10px;
+    padding-top: 0px!important;
+  }
+
+  .el-table__expanded-cell[class*=cell] {
+    padding: 0;
+  }
+}
+
+.footer-btn {
+  text-align: right;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.el-message-box-cancel-btn {
+  background: #e4edff !important;
+  color: #4C84FF !important;
+}
+.el-message-box-confirm-btn {
+  background-color: #4C84FF !important;
+  color: #fff !important;
+}
+
+
+.table_container_saleManagenment_detail {
+  .detail_content {
+    margin-bottom: 0;
+}
+.footer-btn {
+        text-align: center;
+         /deep/ .el-form-item__content {
+            margin-left: 0 !important;
+        }
+    }
+     .container {
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 4px;
+    }
+    .table_container {
+        background-color: #fff;
+        width: 100%;
+        padding-left: 24px;
+        padding-right: 22px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+    .price-wrapper {
+        .use {
+            color: #8FC484;
+        }
+        .notuse {
+            color: #D17275
+
+        }
+
+        .partInfo { // 新增--分区信息
+            height: 421px;
+        }
+
+        .footer-btn {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+    }
+
+    .lableHide {
+        /deep/ .el-checkbox__label {
+            max-width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+    }
+    .popBox{
+        ul{
+            border-bottom: 1px solid #ccc;
+            li{
+                display: inline-block;
+                padding:5px;
+                min-width:10%;
+                text-align: center;
+                font-size: 12px;
+            }
+        }
+    }
+    .table_container .el-table td .svg-icon {
+        vertical-align: -0.1em;
+    }
+    .activeItem{
+        margin-left: 110px;
+    }
+    /deep/.select-popper.el-select-dropdown.el-popper {
+        width: 300px !important;
+        &::before {
+            content: '产品名称 产品代码';
+            word-spacing: 111px;
+            color: #4c8cff;
+            font-size: 14px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 10px;
+            margin-left: 21px;
+            height: 20px;
+            line-height: 20px;
+        }
+        .input-code {
+            width: 85px;
+        }
+    }
+    /deep/.price-select-popper.el-select-dropdown.el-popper {
+        &::before {
+            content: '销售价名称 销售价编号';
+            word-spacing: 97px;
+        }
+    }
+    /deep/.creator-select-popper {
+        width: 185px !important;
+        &::before {
+            content: '工号 名称';
+            word-spacing: 66px;
+            color: #4c8cff;
+            font-size: 14px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 10px;
+            margin-left: 19px;
+            height: 20px;
+            line-height: 20px;
+        }
+        .input-code {
+            width: 45px;
+        }
+    }
+    /deep/.incidental-select-popper.el-select-dropdown.el-popper {
+        width: 300px !important;
+        &::before {
+            content: '杂费名称 杂费编码';
+            word-spacing: 118px;
+            color: #4c8cff;
+            font-size: 14px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 10px;
+            margin-left: 19px;
+            height: 20px;
+            line-height: 20px;
+        }
+    }
+    .input-value {
+        float: left;
+        width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .input-code {
+        float: right;
+        width: 80px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size:13px;
+        color: #8492a6;
+    }
+    .input-values {
+        width: 65px;
+    }
+    .incidental-name {
+        width: 110px;
+        display: inline-block;
+    }
+    .input-codes {
+        width: 40px;
+    }
+    .el-select-dropdown__item.selected .input-code {
+        color: #4C84FF; 
+    }
+    .el-table::before {
+        z-index: inherit;
+    }
+    /deep/.templete-data-info .el-table__body-wrapper {
+        overflow: scroll;
+        max-height: 300px;
+    }
+  .el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+    background-color: #4c84ff;
+    color: #fff;
+    border-radius: 4px 0 0 0;
+    font-size: 12px;
+}
+.el-tabs__item {
+        font-size: 12px !important;
+    }
+    .el-form-item__label {
+        width: 6.25rem !important;
+        .el-form-item__content {
+            margin-left: 100px !important;
+        }
+    }
+    .el-form-item--mini .el-form-item__content {
+        margin-left: 0px !important;
+    }
+    .el-row {
+        margin-left: 55px;
+        margin-top: 25px;
+    }
+    .el-checkbox__input.is-disabled.is-checked .el-checkbox__inner {
+        border-color: #4C84FF !important;
+        background-color: #4C84FF !important;
+    }
+    .templete-data-info .el-table__body-wrapper {
+        overflow: unset;
+    }
+    .price-wrap {
+      .el-form-item__label {
+        // width: 6.25rem !important;
+        .el-form-item__content {
+            margin-left: 0px !important;
+        }
+    }
+    }
+    .table_el-form-item__content {
+      .el-form-item__content {
+        margin-left: 0px !important;
+      }
+    }
+
+    .el-icon-loading-none {
+      display: none;
+  }
+  .innerInput input{
+      width: 120px!important;
+  }
+  .pointer {
+      cursor: pointer;
+  }
+  /deep/ .elCard {
+      .el-card__body{
+          padding-top: 0px;
+      }
+  }
+  .el-drawer__header span:focus{
+      outline:0;
+  }
+  .el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+      background-color: #4c84ff;
+      color: #fff;
+      border-radius: 4px 0 0 0;
+      font-size: 12px;
+  }
+  .el-tabs__item {
+      font-size: 12px !important;
+  }
+  .el-form-item__label {
+      width: 6.25rem !important;
+      .el-form-item__content {
+          margin-left: 0px !important;
+      }
+  }
+  .el-form-item--mini .el-form-item__content {
+      margin-left: 0px !important;
+  }
+  .el-row {
+      margin-left: 55px;
+      margin-top: 25px;
+  }
+  .el-checkbox__input.is-disabled.is-checked .el-checkbox__inner {
+      border-color: #4C84FF !important;
+      background-color: #4C84FF !important;
+  }
+  .templete-data-info .el-table__body-wrapper {
+      overflow: unset;
+  }
+  .el-table__body {
+      width: 100% !important;
+  }
+  .el-table {
+    width: 100%;
+  }
+  .price_incidentalFeeInfo {
+      .el-table__body {
+          width: 100% !important;
+      }
+      tr {
+          height: 50%;
+      }
+       td {
+          height: 50px;
+       }
+  }
+  .templete-data-info .el-table__body-wrapper {
+    overflow: unset !important;
+}
+.table_container_saleManagenment_detail .el-form-item--mini .el-form-item__content, .table_container_saleManagenment_detail .el-form-item__label .el-form-item__content {
+  margin-left: 0px!important;
+}
+
+.table_container_fourth {
+  .table_container_saleManagenment_detail .el-form-item--mini .el-form-item__content {
+    margin-left: 0px !important;
+  }
+}
+.el_input_centerDetail {
+  .el-input__inner {
+    text-align: center;
+  }
+}
+   
+.price_incidentalFeeInfo tbody {
+  height: 25.4375rem;
+  // max-height: 23.8125rem;
+}
+.el-dialog .el-dialog__header .el-icon-close {
+  color: #fff !important;
+}
+
+}
+
+
+.table_container_saleManagement_partition {
+  .detail_content {
+    margin-bottom: 0;
+}
+.el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+        background-color: #4c84ff;
+        color: #fff;
+        border-radius: 4px 0 0 0;
+        font-size: 12px;
+}
+.el-tab-pane {
+    background-color: #fff;
+}
+.el-tabs__nav {
+  cursor: default !important; // 设置光标为默认值，取消小手样式
+}
+}
+.viewIncidentals .el-tabs--card > .el-tabs__header .el-tabs__item.is-active {
+  cursor: default;
+}
+
+.viewIncidentals {
+  .el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+    background-color: #4c84ff !important;
+    color: #fff !important;
+    border-radius: 4px 0 0 0 !important;
+    font-size: 12px !important;
+}
+.el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+    background-color: #4c84ff !important;
+    color: #fff !important;
+    border-radius: 4px 0 0 0 !important;
+    font-size: 12px !important;
+}
+}
+
+.setVolumeRule {
+  .detail_content {
+    margin-bottom: 16px;
+  }
+  .left_content {
+    float: left;
+    width: 130px;
+    height: 28px;
+    overflow: hidden;
+    margin-right: 10px;
+    color: #333;
+    font-weight: 400;
+    line-height: 28px;
+    text-align: right;
+  }
+  
+  .right_content {
+    float: left;
+    width: calc(100% - 140px);
+    height: 28px;
+    overflow: hidden;
+    line-height: 28px;
+    text-align: left;
+    color: #606266;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    white-space:normal; 
+    word-break:break-all;
+  }
+}
+.table_container_saleManagenment_detail .price_incidentalFeeInfo tr {
+  height: 1%;
+}
+.table_container_saleManagenment_detail .el-checkbox__input.is-disabled.is-checked .el-checkbox__inner {
+  border-color: #E4E7ED !important;
+  background-color: #E4E7ED !important;
+}
+.viewIncidentals {
+  .el-dialog .el-dialog__header .el-icon-close {
+    color: #fff !important;
+  }
+}
+/*
+
+confirmButtonClass: 'el-message-box-confirm-btn',
+cancelButtonClass: 'el-message-box-cancel-btn',
+
+*/

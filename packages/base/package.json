@@ -1,0 +1,50 @@
+{
+  "name": "vue2-pro-ui",
+  "version": "1.0.0",
+  "description": "vue2",
+  "main": "./lib/index.js",
+  "module": "./esm/index.js",
+  "license": "MIT",
+  "files": [
+    "lib",
+    "esm"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChenlingasMx/vue2-pro-ui.git"
+  },
+  "keywords": [
+    "vue",
+    "vue2"
+  ],
+  "peerDependencies": {
+    "vue": ">=2.0.0",
+    "element-ui": ">=2.15.7",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "vue": "^2.5.22",
+    "element-ui": "^2.11.0",
+    "moment": "^2.29.1",
+    "sass-loader": "^7.1.0",
+    "node-sass": "^4.14.1",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.7.14"
+    
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  }
+}
