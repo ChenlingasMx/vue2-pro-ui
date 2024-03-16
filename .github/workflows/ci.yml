@@ -18,7 +18,7 @@ jobs:
       - run: npm run bootstrap
       - run: npm run build:website
 
-      - name: Is a tag created auto?
+      - name: Create Tag
         id: create_tag
         uses: jaywcjlove/create-tag-action@main
         with:
@@ -36,7 +36,7 @@ jobs:
 
 
       - name: Create Release
-        uses: jaywcjlove/create-tag-action@v1.3.4
+        uses: jaywcjlove/create-tag-action@main
         with:
           package-path: ./packages/base/package.json
           release: true
