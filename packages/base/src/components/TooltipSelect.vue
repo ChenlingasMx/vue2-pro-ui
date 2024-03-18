@@ -8,7 +8,7 @@
       :multiple="multiple"
       collapse-tags
       :remote-method="(val) => $emit('search', val.trim())"
-      :focus="() => $emit('focus', '')"
+      @focus="() => $emit('focus', '')"
       :placeholder="placeholder"
       :disabled="disabled"
       :filter-method="dataFilter"

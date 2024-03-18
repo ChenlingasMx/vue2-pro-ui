@@ -37,9 +37,9 @@
                 v-model="dataSource[item.prop]"
                 clearable
                 :placeholder="item.placeholder || `请选择${item.label}`"
-                :focus="item.events && item.events.focus && item.events.focus('')"
                 :remote="item.remote || false"
                 :remote-method="($event) => item.events && item.events.search && item.events.search($event)"
+                @focus="item.events && item.events.focus && item.events.focus('')"
                 :disabled="item.disabled"
                 :value-key="item.valueKey"
                 v-bind="item.attrs"
