@@ -23,7 +23,9 @@ export default {
   },
   watch: {},
   mounted() {
-    this.$parent[this?.proTableRef] = this.$refs.elTable;
+    if (this.proTableRef) {
+      this.$parent[this.proTableRef] = this.$refs.elTable;
+    }
   },
   methods: {
     renderFun(columns) {

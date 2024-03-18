@@ -40,10 +40,10 @@ export default {
   },
   methods: {
     currentChage(val) {
-      this.pagination?.currentChange(val);
+      this.pagination.currentChange && this.pagination.currentChange(val);
     },
     sizeChange(val) {
-      this.pagination?.sizeChange(val);
+      this.pagination.sizeChange && this.pagination.sizeChange(val);
     },
   },
 };

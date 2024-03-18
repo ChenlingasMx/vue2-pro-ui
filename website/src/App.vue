@@ -24,7 +24,7 @@
     <section class="table_container" ref="tableContainer">
       <div class="table-top-btn">
         <el-button type="primary" size="mini">导出</el-button>
-        <el-button type="reset" size="mini">新增</el-button>
+        <el-button type="reset" size="mini" @click="handleAdd">新增</el-button>
       </div>
       <pro-table
         proTableRef="proTableRef"
@@ -260,7 +260,9 @@ export default {
     });
   },
   methods: {
-    handleClick() {},
+    handleAdd() {
+      console.log('proTableRef', this.proTableRef);
+    },
     handlerest() {},
     sizeChange(pageSize) {
       console.log('pageSize', pageSize);
