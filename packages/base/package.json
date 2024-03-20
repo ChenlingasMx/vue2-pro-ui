@@ -1,6 +1,6 @@
 {
   "name": "vue2-pro-ui",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "vue2",
   "main": "./lib/index.js",
   "module": "./esm/index.js",

@@ -208,6 +208,17 @@ export default {
           align: 'center',
         },
         {
+          type: 'expand',
+          fixed: 'left',
+          width: 150,
+          align: 'center',
+          render:()=>{
+            return (
+              <span>1234</span>
+            )
+          }
+        },
+        {
           fixed: 'left',
           width: 110,
           label: '操作',

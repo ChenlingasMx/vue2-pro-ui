@@ -1,27 +1,39 @@
 <template>
+  <el-tooltip
+    class="item"
+    effect="dark"
+    placement="top"
+    :disabled="!tagList || tagList.length == 0"
+  >
+    <div slot="content">
+      <p v-for="(item, key) in tagList" :key="key">{{ item[params.label] }}</p>
+    </div>
     <el-select
       ref="tagSelect"
-      v-model="selectVal"
+      v-model="defaultValue"
       :remote="remote"
       :filterable="filterable"
       :clearable="clearable"
       :multiple="multiple"
       collapse-tags
       :remote-method="(val) => $emit('search', val.trim())"
-      @focus="() => $emit('focus', '')"
+      @focus="() => handleFocus('')"
       :placeholder="placeholder"
       :disabled="disabled"
       :filter-method="dataFilter"
       :value-key="valueKey"
       popper-class="select-popper"
-      :v-bind="attrs"
+      reserve-keyword
+      @change="handleChange"
+      @visible-change="visibleChange"
+      :loading="loading"
     >
       <div v-if="multiple && tagList.length > 0" class="tagList">
         <div>已选择</div>
         <div class="tagLabel-wrap">
           <span v-for="(e, i) in tagList" :key="i" class="tagLabel">
             <span>{{ e[params.label] }}</span>
-            <i @click="deleteTag(i)" class="el-icon-close"></i>
+            <i @click="deleteTag(e[params.value])" class="el-icon-close"></i>
           </span>
         </div>
       </div>
@@ -37,34 +49,24 @@
 
       <el-option
         style="max-width: 350px"
-        v-for="(item, index) in dataList"
+        v-for="item in dataList"
         :key="item[params.value]"
         :value="valueKey ? item : item[params.value]"
         :label="item[params.label]"
         :disabled="item.disabled"
       >
-        <tooltip-over
-          :content="item[params.label]"
-          class="input-value"
-          :refName="'tooltipOverProductName' + index"
-        />
-        <tooltip-over
-          :content="item[params.value]"
-          class="input-code"
-          :refName="'tooltipOverProductCode' + index"
-        />
+        <span style="float: left">{{ item[params.label] }}</span>
+        <span style="float: right">{{ item[params.value] }}</span>
       </el-option>
     </el-select>
+  </el-tooltip>
 </template>
 
 <script>
-import TooltipOver from "./TooltipOver";
 import _ from "lodash";
 export default {
-  name: "tooltipSelect",
-  components: {
-    TooltipOver,
-  },
+  name: "ProSelect",
+  components: {},
   props: {
     value: {
       required: true,
@@ -114,49 +116,76 @@ export default {
       type: String,
       default: "",
     },
-    attrs: {
-      type: Object,
-      default: () => ({}),
+    loading: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
     return {
+      defaultValue: null,
       tagList: [],
-      inputValue: false,
       dataList: [],
+      isFirstFocus: true, // 是否触发focus
+      dataTagList: [],
     };
   },
-  computed: {
-    selectVal: {
-      get() {
-        return this.value;
-      },
-      set(val) {
-        this.$emit("input", val);
-      },
-    },
-  },
+  computed: {},
   watch: {
     options: {
-      handler(val) {
-        this.dataList = val || [];
+      handler(newValue) {
+        this.dataList = newValue || [];
+        // 记录每次传入的options，去重保证tagList可以显示
+        this.dataTagList = _.uniqBy(
+          [...this.dataTagList, ...(newValue || [])],
+          this.params["value"]
+        );
       },
       immediate: true,
     },
+    // 监听value的变化，获取tagList
     value: {
       handler(val) {
-        if (val && val.length === 0 || !this.multiple) {
-        this.tagList = [];
-      } else {
-        this.tagList = val.map((e) =>
-          this.dataList.find((item) => item[this.params.value] === e)
-        );
-      }
+        // 不是多选 || 多选但是没有值，清空tagList
+        if (!this.multiple || (this.multiple && (!val || val.length === 0))) {
+          this.tagList = [];
+          // 多选传入 value-key
+        } else if (this.valueKey) {
+          this.tagList = val;
+          // 多选没有传入value-key
+        } else {
+          const arr = val.map((e) =>
+            (this.dataTagList || []).find(
+              (item) => item[this.params.value] === e
+            )
+          );
+          this.tagList = arr;
+        }
+        this.defaultValue = val;
       },
       immediate: true,
+      deep: true,
     },
   },
   methods: {
+    // 1.select打开弹窗获取焦点
+    // 2.select关闭弹窗取消焦点
+    // 防止多次change事件多次触发focus
+    visibleChange(show) {
+      this.isFirstFocus = show;
+    },
+    handleFocus(value) {
+      this.$nextTick(() => {
+        if (this.isFirstFocus) {
+          this.$emit("focus", value);
+          this.isFirstFocus = false;
+        }
+      });
+    },
+    handleChange(value) {
+      this.$emit("change", value);
+      this.$emit("input", value);
+    },
     dataFilter(val) {
       let dataListBackup = _.cloneDeep(this.options);
       if (val) {
@@ -179,11 +208,21 @@ export default {
       }
     },
     // 删除tags
-    deleteTag(i) {
-      this.tagList.splice(i, 1);
-      this.$refs.tagSelect.selected = this.tagList;
-      this.selectVal.splice(i, 1);
-      this.$emit("input", [...this.selectVal]);
+    deleteTag(value) {
+      // 找到要删除的元素在 tagList 中的索引
+      const index = this.tagList.findIndex(
+        (item) => item[this.params.value] === value
+      );
+      if (index !== -1) {
+        this.tagList.splice(index, 1);
+        this.defaultValue = this.defaultValue.filter(
+          (item) => item[this.params.value] !== value
+        );
+        this.$refs.tagSelect.selected = this.tagList.map(
+          (item) => item[this.params.value]
+        );
+        this.$emit("input", this.defaultValue);
+      }
     },
   },
 };

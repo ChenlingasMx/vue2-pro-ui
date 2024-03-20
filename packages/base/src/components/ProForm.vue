@@ -54,8 +54,8 @@
                   v-bind="option.attrs"
                 />
               </el-select>
-              <tooltip-select
-                v-if="item.type === 'tooltipSelect'"
+              <pro-select
+                v-if="item.type === 'proSelect'"
                 v-model="dataSource[item.prop]"
                 :options="item.options"
                 :params="item.params"
@@ -174,11 +174,11 @@
 </template>
 
 <script>
-import TooltipSelect from './TooltipSelect';
+import ProSelect from './ProSelect';
 export default {
   name: 'SearchFormPro',
   components: {
-    TooltipSelect,
+    ProSelect,
   },
   props: {
     dataSource: {
