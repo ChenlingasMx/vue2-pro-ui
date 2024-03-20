@@ -55,7 +55,6 @@ export default {
           attrs={{ ...this.tableProps }}
           ref="elTable"
           v-loading={this.loading}
-          stripe
           style={{ ...this.tableStyle }}
           {...{ on }}
         >
