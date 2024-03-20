@@ -10,7 +10,7 @@
     "map": "source-map-explorer dist/js/*.js --html dist/dependencies.html"
   },
   "dependencies": {
-    "vue2-pro-ui": "1.0.0",
+    "vue2-pro-ui": "1.5.0",
     "core-js": "^3.6.5",
     "vue": "2.6.10",
     "vue-router": "3.0.2",
